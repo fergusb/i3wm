@@ -204,6 +204,9 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2- unmute
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2+ unmute
 # bindsym XF86AudioPlay
 
+# disable mousiness
+focus_follows_mouse no
+
 # start the session
 exec --no-startup-id ~/.i3/autostart
 
