@@ -207,6 +207,11 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 2+ unmute
 # disable mousiness
 focus_follows_mouse no
 
+# screen lock
+exec xautolock -time 5 -locker 'i3lock -d -c 000000'
+bindsym Ctrl+Mod1+l exec i3lock -d -c 000000
+# bindsym Ctrl+Mod1+l exec i3lock -d -c 000000 && xset dpms force off
+
 # start the session
 exec --no-startup-id ~/.i3/autostart
 
