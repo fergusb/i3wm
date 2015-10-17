@@ -3,7 +3,6 @@
 # init stuff
 eval $(ssh-agent)
 eval $(gpg-agent --daemon)
-# eval $(gnome-keyring-daemon)
 if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
   eval `dbus-launch --sh-syntax --exit-with-session`
 fi
@@ -12,41 +11,47 @@ fi
 keychain &
 
 # desktop 
-xsetroot -solid "#505050"
+xsetroot -solid "#505050" &
+
+# daemonise URxvt
+urxvtd -q -f -o &
 
 # network manager
 # (sleep 3 && /usr/bin/nm-applet --sm-disable) &
-exec --no-startup-id nm-applet &
+# nm-applet --sm-disable &
 
 # mouse control
 # xset m 7 10 &     # Very Fast
 # xset m 5 10 &     # Faster
 # xset m 3 10 &     # Normal(Fast)
-xset m default &  # System Default
+# xset m default &  # System Default
 # xset m 0 10 &     # Glacial
 
 # disable beeps
 xset -b &
  
 # audio level +- 0dB
-amixer -- sset Headphone playback 0dB
+# amixer -- sset Headphone playback 0dB &
 
 # DPMS monitor setting (standby -> suspend -> off) (seconds)
-xset dpms 600 1200 2000 &
+# xset dpms 600 1200 2000
 
-## set LCD brightness
+# Screenlockk
+xautolock -time 5 -locker 'i3lock -d -c 000000' &
+
+# set LCD brightness
 xbacklight -set 100 &
 
 # system info
 # conky &
 
 # set compose key
-setxkbmap -option compose:ralt
+setxkbmap -option compose:ralt &
 
-xmodmap ~/.Xmodmap
+xmodmap ~/.Xmodmap &
 
-## refresh
+# refresh
 xrefresh &
 
-## good work :)
+# good work :)
 exit 0
