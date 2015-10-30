@@ -16,6 +16,10 @@ xsetroot -solid "#505050" &
 # daemonise URxvt
 urxvtd -q -f -o &
 
+# keep clipbaord in sync
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
+
 # network manager
 # (sleep 3 && /usr/bin/nm-applet --sm-disable) &
 # nm-applet --sm-disable &
