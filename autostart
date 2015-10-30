@@ -8,7 +8,7 @@ if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
 fi
 
 # keychain
-keychain &
+# keychain &
 
 # desktop 
 xsetroot -solid "#505050" &
@@ -40,7 +40,7 @@ xset -b &
 xautolock -time 5 -locker 'i3lock -d -c 000000' &
 
 # set LCD brightness
-xbacklight -set 100 &
+# xbacklight -set 100 &
 
 # system info
 # conky &
