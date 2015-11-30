@@ -1,14 +1,13 @@
 #!/bin/sh
 
-# init stuff
-# eval $(ssh-agent)
-# eval $(gpg-agent --daemon)
-if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-  eval `dbus-launch --sh-syntax --exit-with-session`
-fi
+# start ssh-agent & gpg-agent
+eval $(ssh-agent) &
+eval $(gpg-agent --daemon) &
 
-# desktop 
-xsetroot -solid "#505050" &
+# init dbus
+if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+  eval $(dbus-launch --sh-syntax --exit-with-session) &
+fi
 
 # daemonise URxvt
 urxvtd -q -f -o &
@@ -16,10 +15,18 @@ urxvtd -q -f -o &
 # keep clipbaord in sync
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
+ 
+# audio level +- 0dB
+# amixer -- sset Headphone playback 0dB &
 
-# network manager
-# (sleep 3 && /usr/bin/nm-applet --sm-disable) &
-# nm-applet --sm-disable &
+# source X settings
+xrdb -merge ~/.Xresources &
+
+# desktop 
+xsetroot -solid "#505050" &
+
+# DPMS monitor setting (standby -> suspend -> off) (seconds)
+# xset dpms 600 1200 2000
 
 # mouse control
 # xset m 7 10 &     # Very Fast
@@ -30,14 +37,8 @@ autocutsel -selection PRIMARY -fork &
 
 # disable beeps
 xset -b &
- 
-# audio level +- 0dB
-# amixer -- sset Headphone playback 0dB &
 
-# DPMS monitor setting (standby -> suspend -> off) (seconds)
-# xset dpms 600 1200 2000
-
-# Screenlockk
+# Screenlock
 xautolock -time 5 -locker 'i3lock -d -c 000000' &
 
 # set LCD brightness
@@ -49,7 +50,7 @@ xautolock -time 5 -locker 'i3lock -d -c 000000' &
 # set compose key
 setxkbmap -option compose:ralt &
 
-# xmodmap ~/.Xmodmap &
+xmodmap ~/.Xmodmap &
 
 # refresh
 xrefresh &
