@@ -130,16 +130,16 @@ mode "resize" {
   # Pressing right will grow the window’s width.
   # Pressing up will shrink the window’s height.
   # Pressing down will grow the window’s height.
-  bindsym j resize shrink width 5 px or 5 ppt
-  bindsym k resize grow height 5 px or 5 ppt
-  bindsym l resize shrink height 5 px or 5 ppt
-  bindsym semicolon resize grow width 5 px or 5 ppt
+  bindsym j resize shrink width 2 px or 2 ppt
+  bindsym k resize grow height 2 px or 2 ppt
+  bindsym l resize shrink height 2 px or 2 ppt
+  bindsym semicolon resize grow width 2 px or 2 ppt
 
   # same bindings, but for the arrow keys
-  bindsym Left resize shrink width 5 px or 5 ppt
-  bindsym Down resize grow height 5 px or 5 ppt
-  bindsym Up resize shrink height 5 px or 5 ppt
-  bindsym Right resize grow width 5 px or 5 ppt
+  bindsym Left resize shrink width 2 px or 2 ppt
+  bindsym Down resize grow height 2 px or 2 ppt
+  bindsym Up resize shrink height 2 px or 2 ppt
+  bindsym Right resize grow width 2 px or 2 ppt
 
   # back to normal: Enter or Escape
   bindsym Return mode "default"
@@ -147,6 +147,12 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# float certain windows
+for_window [class="Firefox"] floating enable
+for_window [class="Iceweasel"] floating enable
+for_window [class="Gimp"] floating enable
+for_window [class="VLC"] floating enable
 
 # F-Lock keys
 #bindsym Help
@@ -159,8 +165,8 @@ bindsym $mod+r mode "resize"
 #bindsym XF86MailForward
 #bindsym XF86Send
 #bindsym XF86Save
-bindsym Print exec scrot -e 'mv $f ~/Pictures/'
-bindsym $mod+Print exec scrot -s -e 'mv $f ~/Pictures/'
+bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
+bindsym $mod+Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -s -e 'mv $f ~/Pictures/'
 
 # Audio keys
 bindsym XF86AudioMute exec amixer -q set Master toggle
