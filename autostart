@@ -23,7 +23,7 @@ autocutsel -selection PRIMARY -fork &
 xrdb -merge ~/.Xresources &
 
 # desktop 
-xsetroot -solid "#505050" &
+xsetroot -solid "#404040" &
 
 # DPMS monitor setting (standby -> suspend -> off) (seconds)
 # xset dpms 600 1200 2000
