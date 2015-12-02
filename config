@@ -164,8 +164,8 @@ for_window [class="Iceweasel"] floating enable
 #bindsym XF86MailForward
 #bindsym XF86Send
 #bindsym XF86Save
-bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/'
-bindsym $mod+Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -s -e 'mv $f ~/Pictures/'
+bindsym Print exec scrot "scrot_%Y-%m-%d_at_%T_$wx$h.png" -e 'mv $f ~/Pictures/'
+bindsym $mod+Print exec scrot 'scrot_%Y-%m-%d-%T_$wx$h.png' -s -e 'mv $f ~/Pictures/'
 
 # Audio keys
 bindsym XF86AudioMute exec amixer -q set Master toggle
