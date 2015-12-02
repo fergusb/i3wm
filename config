@@ -149,7 +149,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # float some windows
-for_window [class="Iceweasel"] floating enable
+for_window [class="Spotify"] floating enable
 # for_window [class="Gimp"] floating enable, border none
 # for_window [class="VLC"] floating enable
 
