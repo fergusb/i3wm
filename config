@@ -177,7 +177,11 @@ bindsym $mod+Print exec scrot 'scrot_%Y-%m-%d-%T_$wx$h.png' -s -e 'mv $f ~/Pictu
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2- unmute
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2+ unmute
-# bindsym XF86AudioPlay
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 # Screen lock
 bindsym Ctrl+Mod1+l exec i3lock -d -c 000000

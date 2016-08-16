@@ -8,9 +8,9 @@ eval $(gpg-agent --daemon) &
 # keychain -q --nogui $HOME/.ssh/id_rsa &
 
 # init dbus
-if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-  eval $(dbus-launch --sh-syntax --exit-with-session) &
-fi
+# if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+  # eval $(dbus-launch --sh-syntax --exit-with-session) &
+# fi
 
 # daemonise URxvt
 urxvtd -q -f -o &
@@ -51,7 +51,10 @@ xautolock -time 5 -locker 'i3lock -d -c 000000' &
 # conky &
 
 # set compose key
-setxkbmap -option compose:ralt &
+# setxkbmap -option compose:ralt &
+
+# Bluetooth
+# blueman-applet &
 
 xmodmap ~/.Xmodmap &
 
