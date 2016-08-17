@@ -35,7 +35,7 @@ bindsym $mod+Shift+d exec gmrun
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -fn 'DejaVu Sans Mono-8'"
 
 # bindsym $mod+Shift+d exec --no-startup-id j4-dmenu-desktop
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --no-generic --dmenu="dmenu -i -fn 'DejaVu Sans Mono-8'"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --no-generic --dmenu="dmenu -i -sb '#07f' -fn 'DejaVu Sans Mono-8'"
 # bindsym $mod+Shift+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -fn 'DejaVu Sans-10' -l 10"
 
 # change focus
@@ -197,7 +197,7 @@ bar {
         separator  #666666
 
         # Type             border  background font
-        focused_workspace  #008fff #007fff #ffffff
+        focused_workspace  #008fff #0077ff #ffffff
         active_workspace   #333333 #5f676a #ffffff
         inactive_workspace #333333 #222222 #888888
         urgent_workspace   #aa0000 #990000 #ffffff
