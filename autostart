@@ -18,6 +18,7 @@ urxvtd -q -f -o &
 # keep clipbaord in sync
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
+autocutsel -selection CLIPBOARD -fork &
  
 # audio level +- 0dB
 # amixer -- sset Headphone playback 0dB &
@@ -26,7 +27,8 @@ autocutsel -selection PRIMARY -fork &
 xrdb -merge ~/.Xresources &
 
 # desktop 
-xsetroot -solid "#404040" &
+# xsetroot -solid "#404040" &
+hsetroot -solid "#404040" &
 
 # DPMS monitor setting (standby -> suspend -> off) (seconds)
 # xset dpms 600 1200 2000
@@ -50,8 +52,11 @@ xautolock -time 5 -locker 'i3lock -d -c 000000' &
 # system info
 # conky &
 
+# Music!
+# mopidy &
+
 # set compose key
-# setxkbmap -option compose:ralt &
+setxkbmap -option compose:ralt &
 
 # Bluetooth
 # blueman-applet &
@@ -60,6 +65,9 @@ xmodmap ~/.Xmodmap &
 
 # refresh
 xrefresh &
+
+# start compositor
+compton -CGb --no-fading-openclose &
 
 # good work :)
 exit 0

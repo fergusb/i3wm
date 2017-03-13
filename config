@@ -173,10 +173,20 @@ bindsym $mod+r mode "resize"
 bindsym Print exec scrot "scrot_%Y-%m-%d_at_%T_$wx$h.png" -e 'mv $f ~/Pictures/'
 bindsym $mod+Print exec scrot 'scrot_%Y-%m-%d-%T_$wx$h.png' -s -e 'mv $f ~/Pictures/'
 
-# Audio keys
+# Audio keys - ALSA
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2- unmute
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2+ unmute
+
+# Line Out audio keys - PulseAudio
+# bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+# bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -2%
+# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +2%
+
+# Headphone audio keys - PulseAudio
+# bindsym $mod+XF86AudioMute exec pactl set-sink-mute 1 toggle
+# bindsym $mod+XF86AudioLowerVolume exec pactl set-sink-volume 1 -2%
+# bindsym $mod+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +2%
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -205,7 +215,7 @@ bar {
     # i3bar position
     position bottom
     # Using custom i3status.conf
-    status_command i3status -c ~/.i3/i3status.conf
+    status_command i3status -c ~/.config/i3/i3status.conf
     # status_command i3blocks
 }
 
@@ -220,9 +230,13 @@ new_float 1pixel
 
 # Handy tweaks
 focus_follows_mouse no
+force_focus_wrapping yes
 workspace_auto_back_and_forth yes
 
+# compositing
+# exec --no-startup-id compton  
+
 # Start the autostart script
-exec --no-startup-id ~/.i3/autostart
+exec --no-startup-id ~/.config/i3/autostart
 
 # eof
