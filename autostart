@@ -4,9 +4,6 @@
 eval $(ssh-agent) &
 eval $(gpg-agent --daemon) &
 
-# init keychain
-# keychain -q --nogui $HOME/.ssh/id_rsa &
-
 # init dbus
 # if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
   # eval $(dbus-launch --sh-syntax --exit-with-session) &
@@ -23,8 +20,21 @@ autocutsel -selection CLIPBOARD -fork &
 # audio level +- 0dB
 # amixer -- sset Headphone playback 0dB &
 
-# source X settings
-xrdb -merge ~/.Xresources &
+# compositor
+# compton -CGb --no-fading-openclose &
+# compton &
+
+# system info
+# conky &
+
+# Music!
+# mopidy &
+
+# Bluetooth
+# blueman-applet &
+
+# screenlock
+xautolock -time 3 -locker "i3lock -c000000" &
 
 # desktop 
 # xsetroot -solid "#404040" &
@@ -43,31 +53,20 @@ hsetroot -solid "#404040" &
 # disable beeps
 xset -b &
 
-# Screenlock
-xautolock -time 5 -locker 'i3lock -d -c 000000' &
-
 # set LCD brightness
 # xbacklight -set 100 &
 
-# system info
-# conky &
+# X settings
+xrdb -merge ~/.Xresources &
 
-# Music!
-# mopidy &
+# keyboard mappings
+xmodmap ~/.Xmodmap &
 
 # set compose key
-setxkbmap -option compose:ralt &
-
-# Bluetooth
-# blueman-applet &
-
-xmodmap ~/.Xmodmap &
+# setxkbmap -option compose:ralt &
 
 # refresh
 xrefresh &
-
-# start compositor
-compton -CGb --no-fading-openclose &
 
 # good work :)
 exit 0
