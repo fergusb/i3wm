@@ -2,7 +2,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# congigure modifier key
 set $mod Mod4
+# set $sup Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -90,11 +92,12 @@ bindsym $mod+c focus child
 
 
 # name workspaces
-set $tag1 "1: rxvt"
-set $tag2 "2: www"
-set $tag3 "3: media"
-set $tag4 "4: graphics"
-set $tag5 "5: stuff"
+set $tag1 "1:rxvt"
+set $tag2 "2:www"
+set $tag3 "3:media"
+set $tag4 "4:graphics"
+set $tag5 "5:IDE"
+set $tag6 "6:stuff"
 
 # switch to workspace
 bindsym $mod+1 workspace $tag1
@@ -102,11 +105,15 @@ bindsym $mod+2 workspace $tag2
 bindsym $mod+3 workspace $tag3
 bindsym $mod+4 workspace $tag4
 bindsym $mod+5 workspace $tag5
-bindsym $mod+6 workspace 6
+bindsym $mod+6 workspace $tag6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+
+# switch through workspaces
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $tag1
@@ -114,7 +121,7 @@ bindsym $mod+Shift+2 move container to workspace $tag2
 bindsym $mod+Shift+3 move container to workspace $tag3
 bindsym $mod+Shift+4 move container to workspace $tag4
 bindsym $mod+Shift+5 move container to workspace $tag5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+6 move container to workspace $tag6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
@@ -170,8 +177,8 @@ bindsym $mod+r mode "resize"
 #bindsym XF86MailForward
 #bindsym XF86Send
 #bindsym XF86Save
-bindsym Print exec scrot "scrot_%Y-%m-%d_at_%T_$wx$h.png" -e 'mv $f ~/Pictures/'
-bindsym $mod+Print exec scrot 'scrot_%Y-%m-%d-%T_$wx$h.png' -s -e 'mv $f ~/Pictures/'
+bindsym Print exec scrot "scrot_%Y-%m-%d_at_%T_$wx$h.png" -e 'mv $f ~/Dropbox/Bilder/'
+bindsym $mod+Print exec scrot 'scrot_%Y-%m-%d-%T_$wx$h.png' -s -e 'mv $f ~/Dropbox/Bilder/'
 
 # Audio keys - ALSA
 bindsym XF86AudioMute exec amixer -q set Master toggle
@@ -194,7 +201,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Screen lock
-bindsym Ctrl+Mod1+l exec i3lock -d -c 000000
+bindsym Ctrl+Mod4+l exec i3lock -d -c 000000
 # bindsym Ctrl+Mod1+l exec i3lock -d -c 000000 && xset dpms force off
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -214,9 +221,11 @@ bar {
     }
     # i3bar position
     position bottom
+    # kill app icons
+    # tray_output none
     # Using custom i3status.conf
     status_command i3status -c ~/.config/i3/i3status.conf
-    # status_command i3blocks
+    # status_command i3blocks -c ~/.config/i3/i3blocks.conf
 }
 
 # Colours

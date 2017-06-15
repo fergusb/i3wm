@@ -2,6 +2,8 @@
 
 # start ssh-agent & gpg-agent
 eval $(ssh-agent) &
+# ssh-add ~/.ssh/id_rsa &
+# ssh-add ~/.ssh/id_rsa.yeay &
 eval $(gpg-agent --daemon) &
 
 # init dbus
@@ -34,7 +36,7 @@ autocutsel -selection CLIPBOARD -fork &
 # blueman-applet &
 
 # screenlock
-xautolock -time 3 -locker "i3lock -c000000" &
+xautolock -time 5 -locker "i3lock -c000000" &
 
 # desktop 
 # xsetroot -solid "#404040" &
@@ -50,23 +52,11 @@ hsetroot -solid "#404040" &
 # xset m default &  # System Default
 # xset m 0 10 &     # Glacial
 
-# disable beeps
-xset -b &
-
 # set LCD brightness
 # xbacklight -set 100 &
 
-# X settings
-xrdb -merge ~/.Xresources &
-
-# keyboard mappings
-xmodmap ~/.Xmodmap &
-
 # set compose key
 # setxkbmap -option compose:ralt &
-
-# refresh
-xrefresh &
 
 # good work :)
 exit 0
